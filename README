@@ -1,0 +1,34 @@
+Use the HHH class with your switch . . . 
+  """ simulates HHH algorithm module for one run
+        
+        output: list of TCAM rules to monitor (stored in nextTCAMList)
+        input: Dict of counts for those TCAM rules (process(Dict))
+        can access: HHH() to initialize, process(), nextTCAMList, 
+        nextMonitorHHHes, HHHReport after each process,
+        
+        Btw you only need to do
+        import HHH
+        
+        h = HHH.HHH() #initialize
+        
+        result = h.start()
+        nextTCAMList = result[0] # this is a list
+        monitoredHHHes = result[1] # also a list
+
+        repeat:
+            #get TCAMCounts using nextTCAMList
+            
+            # TCAMCounts is a Counter() with all the 
+            # prefixes in TCAMList, set them to 0
+            # explicitly if that prefix didn't match
+            # any packets
+            
+            # You can make a Counter from a dict
+            # with just c = Counter(dict)
+            
+            result = h.run(TCAMCounts, monitoredHHHes)
+        
+            nextTCAMList = result[0]
+            monitoredHHHes = result[1]
+            HHHReport = result[2] # this is a dict
+    """
